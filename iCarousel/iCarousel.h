@@ -120,6 +120,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, getter = isWrapEnabled) BOOL wrapEnabled;
 @property (nonatomic, assign) BOOL bounces;
 @property (nonatomic, assign) CGFloat scrollOffset;
+#ifdef ICAROUSEL_IOS
+@property (nonatomic, readonly) UIPanGestureRecognizer *panGesture;
+#endif
 @property (nonatomic, readonly) CGFloat offsetMultiplier;
 @property (nonatomic, assign) CGSize contentOffset;
 @property (nonatomic, assign) CGSize viewpointOffset;

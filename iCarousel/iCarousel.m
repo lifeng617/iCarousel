@@ -96,6 +96,11 @@
 
 
 @interface iCarousel ()
+{
+#ifdef ICAROUSEL_IOS
+    UIPanGestureRecognizer *_panGesture;
+#endif
+}
 
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) NSMutableDictionary *itemViews;
@@ -159,6 +164,7 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
     panGesture.delegate = (id <UIGestureRecognizerDelegate>)self;
     [_contentView addGestureRecognizer:panGesture];
+    _panGesture = panGesture;
     
     //add tap gesture recogniser
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
@@ -2187,6 +2193,10 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
     }
 }
 
+- (UIPanGestureRecognizer *)panGesture
+{
+    return _panGesture;
+}
 #else
 
 
